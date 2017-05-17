@@ -1,4 +1,4 @@
-// BWT.cpp : 定义控制台应用程序的入口点。
+// BWT.cpp : 露篓脪氓驴脴脰脝脤篓脫娄脫脙鲁脤脨貌碌脛脠毛驴脷碌茫隆拢
 //
 
 #include "stdafx.h"
@@ -16,9 +16,9 @@ using namespace std;
 char seq[MAX] = "ACGTGATTA$";
 char seqSon[MAX] = "GTG";
 
-char BWTMatrix[MAX][MAX]; //BWT矩阵
-char order[MAX]; //记录顺序
-map<char, int> siteMapFrom;//记录BWT序列中每个字符出现的位置
+char BWTMatrix[MAX][MAX]; //BWT戮脴脮贸
+char order[MAX]; //录脟脗录脣鲁脨貌
+map<char, int> siteMapFrom;//录脟脗录BWT脨貌脕脨脰脨脙驴赂枚脳脰路没鲁枚脧脰碌脛脦禄脰脙
 char BWTSeq[MAX];
 map<char, int> siteMapTo;
 map<char, int> OccFlag[MAX];
@@ -27,10 +27,10 @@ map<char, int> OccFlag[MAX];
 int compare(const void *a, const void *b)
 {
 	return strcmp((char *)a, (char *)b);
-	//return strcmp(*(char **)a, *(char **)b);   针对char *str[8]的写法
+	//return strcmp(*(char **)a, *(char **)b);   脮毛露脭char *str[8]碌脛脨麓路篓
 }
 
-//字符串ch循环右移steps位
+//脳脰路没麓庐ch脩颅禄路脫脪脪脝steps脦禄
 void loopMove(char *ch, int steps)
 {
 	char temp[MAX];
@@ -42,11 +42,11 @@ void loopMove(char *ch, int steps)
 	memcpy(ch, temp, strlen(ch));
 }
 
-//查询site位点前（包含site，从0开数）有多少个base碱基
+//虏茅脩炉site脦禄碌茫脟掳拢篓掳眉潞卢site拢卢麓脫0驴陋脢媒拢漏脫脨露脿脡脵赂枚base录卯禄霉
 int OccSearch(char base, int site) {
 	int num = OccFlag[ (site-1) / occStep ][base];
 	cout << "site , base , site / occStep * occStep : " << site << " " << base << " " << site / occStep * occStep << endl;
-	cout << site-1 / occStep * occStep << "前有多少个" << base << " : " << num <<endl;
+	cout << site-1 / occStep * occStep << "脟掳脫脨露脿脡脵赂枚" << base << " : " << num <<endl;
 	for (int i = (site-1 )/ occStep * occStep+1; i < site;i++) {
 		if (BWTSeq[i] == base) {
 			num++;
@@ -98,7 +98,7 @@ int main()
 {
 	//cin >> seq;
 	int len = strlen(seq);
-	cout <<"母串长度:"<< len<<endl;
+	cout <<"脛赂麓庐鲁陇露脠:"<< len<<endl;
 	for (int i = 0; i < strlen(seq); i++) {
 		memcpy(BWTMatrix[i], seq, strlen(seq));
 		loopMove(seq, 1);
@@ -115,7 +115,7 @@ int main()
 	cout << str[0] << endl;*/
 	//qsort(str, 7, 8, compare);
 	qsort(&BWTMatrix, len, MAX, compare);
-	/*构建BWT矩阵和BWT序列*/
+	/*鹿鹿陆篓BWT戮脴脮贸潞脥BWT脨貌脕脨*/
 
 	setBWT();
 	
@@ -145,11 +145,11 @@ int main()
 	}
 
 	if (from > to - 1) {
-		cout << "没查到" << endl;
+		cout << "脙禄虏茅碌陆" << endl;
 	}
 
 	for (int i = from; i < to; i++) {
-		cout << "在原序列的第 " << len - order[i] << " 位"<< endl;
+		cout << "脭脷脭颅脨貌脕脨碌脛碌脷 " << len - order[i] << " 脦禄"<< endl;
 	}
 
 	system("pause");
